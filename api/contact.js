@@ -1,6 +1,14 @@
-import mongoose from "mongoose";
 import nodemailer from "nodemailer";
-import ContactMessage from "../../models/ContactMessage";
+import mongoose from "mongoose";
+
+const ContactSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  subject: String,
+  message: String,
+}, { timestamps: true });
+
+const ContactMessage = mongoose.models.ContactMessage || mongoose.model("ContactMessage", ContactSchema);
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -15,18 +23,14 @@ export default async function handler(req, res) {
 
   try {
     // Connect to MongoDB
-    if (!mongoose.connections[0].readyState) {
-      await mongoose.connect(process.env.MONGODB_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
+    if (!mongoose.connection.readyState) {
+      await mongoose.connect(process.env.MONGODB_URI);
     }
 
     // Save to DB
-    const newMessage = new ContactMessage({ name, email, subject, message });
-    await newMessage.save();
+    await ContactMessage.create({ name, email, subject, message });
 
-    // Send email
+    // Email transporter
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,
@@ -37,9 +41,10 @@ export default async function handler(req, res) {
       },
     });
 
+    // Send email
     await transporter.sendMail({
       from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_TO,
+      to: process.env.EMAIL_TO || process.env.EMAIL_USER,
       replyTo: email,
       subject: `New Contact: ${subject}`,
       html: `
@@ -51,9 +56,9 @@ export default async function handler(req, res) {
       `,
     });
 
-    return res.status(200).json({ message: "Email sent and saved successfully" });
+    return res.status(200).json({ message: "Message saved & email sent successfully" });
   } catch (error) {
     console.error("Error:", error);
-    return res.status(500).json({ message: "Server Error" });
+    return res.status(500).json({ message: "Error sending message" });
   }
 }
