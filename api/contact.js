@@ -1,14 +1,5 @@
+// pages/api/contact.js
 import nodemailer from "nodemailer";
-import mongoose from "mongoose";
-
-const ContactSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  subject: String,
-  message: String,
-}, { timestamps: true });
-
-const ContactMessage = mongoose.models.ContactMessage || mongoose.model("ContactMessage", ContactSchema);
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -22,30 +13,22 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Connect to MongoDB
-    if (!mongoose.connection.readyState) {
-      await mongoose.connect(process.env.MONGODB_URI);
-    }
-
-    // Save to DB
-    await ContactMessage.create({ name, email, subject, message });
-
-    // Email transporter
+    // Configure the email transporter
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,
       secure: true,
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: process.env.EMAIL_USER, // Gmail address from Vercel env
+        pass: process.env.EMAIL_PASS, // Gmail App Password from Vercel env
       },
     });
 
     // Send email
     await transporter.sendMail({
       from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_TO || process.env.EMAIL_USER,
-      replyTo: email,
+      to: process.env.EMAIL_TO || process.env.EMAIL_USER, // Receiver's email
+      replyTo: email, // When you click reply, it goes to sender
       subject: `New Contact: ${subject}`,
       html: `
         <h3>New Contact Message</h3>
@@ -56,9 +39,9 @@ export default async function handler(req, res) {
       `,
     });
 
-    return res.status(200).json({ message: "Message saved & email sent successfully" });
+    return res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
-    console.error("Error:", error);
-    return res.status(500).json({ message: "Error sending message" });
+    console.error("Error sending email:", error);
+    return res.status(500).json({ message: "Error sending email" });
   }
 }
