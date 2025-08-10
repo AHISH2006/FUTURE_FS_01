@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useIsMobile } from '../hooks/use-mobile';
 import '../styles/Navigation.css';
 
+
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -60,7 +61,7 @@ export default function Navigation() {
   className="navbar"
 >
         <div className="nav-container">
-          <div className="nav-logo">AJ</div>
+          <div className="nav-logo">AHISH | Portfolio</div>
 
           {/* Desktop Navigation */}
           <div className="nav-links-desktop">

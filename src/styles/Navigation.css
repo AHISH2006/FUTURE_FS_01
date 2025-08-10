@@ -54,7 +54,7 @@ transform: translateY(-100%);
   color: var(--primary-color);
   text-decoration: none;
   cursor: pointer;
-  letter-spacing: 1px;
+margin-right: 10rem;
 }
 
 .nav-links-desktop {

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import '../styles/About.css';
+import anuImg from '../assets/ME.png';
 
 export default function About() {
   return (
@@ -38,7 +39,7 @@ export default function About() {
             viewport={{ once: true }}
           >
             <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&h=800"
+              src= {anuImg}
               alt="Anu Ahish - Profile"
               className="about-image"
             />
