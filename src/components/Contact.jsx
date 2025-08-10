@@ -21,7 +21,7 @@ export default function Contact() {
     setIsError(false);
 
     try {
-      const response = await fetch('/api/contact', { // ✅ Relative path works in Vercel
+      const response = await fetch('/api/contact', { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
