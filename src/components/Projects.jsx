@@ -49,7 +49,7 @@ export default function Projects() {
       image: "https://i.pinimg.com/1200x/22/bc/8e/22bc8ebef610eb881071e1a7007a7a80.jpg",
       technologies: ["Html", "CSS", "JavaScript"],
       techColors: ["tag-primary", "tag-secondary", "tag-accent"],
-      github: "https://github.com/yourusername/healthcare-website",
+      
       live: "https://www.rehabionics.in/"
     },
     {
@@ -58,7 +58,7 @@ export default function Projects() {
       image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=800&h=400",
       technologies: ["React.js", "GitHub", "Node.js", "Docker", "Jenkins"],
       techColors: ["tag-primary", "tag-secondary", "tag-accent","tag-secondary", "tag-primary"],
-      github: "https://github.com/yourusername/task-management-app",
+      github: "https://github.com/AHISH2006/NAAN-MUDHALVAN",
 
     },
 

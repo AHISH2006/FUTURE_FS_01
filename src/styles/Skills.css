@@ -34,7 +34,7 @@
 }
 
 .skills-card {
-  background:#0f2027;
+  background: rgba(0, 180, 216, 0.2);
   padding: 1.8rem;
   border-radius: 1rem;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);

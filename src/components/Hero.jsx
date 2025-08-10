@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import '../styles/Hero.css';
 
@@ -9,69 +10,78 @@ export default function Hero() {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3, // Stagger children animations
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        damping: 10,
+        stiffness: 100,
+      },
+    },
+  };
+
   return (
     <section id="home" className="hero-section">
-      {/* Video Background */}
-      <video
-        className="hero-bg"
-        src="https://cdn.pixabay.com/video/2024/02/23/201735-916310640_large.mp4" 
-        autoPlay
-        loop
-        muted
-        playsInline
-      />
-
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.2 }}
         className="hero-content"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
       >
         <motion.h1
           className="hero-title"
-          initial={{ scale: 0.8 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          variants={itemVariants}
         >
           <span className="gradient-text">AHISH S M</span>
         </motion.h1>
 
         <motion.p
           className="hero-subtitle"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
+          variants={itemVariants}
         >
           Frontend Developer | AI & Data Science Student
         </motion.p>
 
         <motion.p
           className="hero-description"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
+          variants={itemVariants}
         >
           Passionate about building responsive, user-friendly applications and solving problems through innovative web and mobile development.
         </motion.p>
 
         <motion.div
           className="hero-buttons"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2 }}
+          variants={itemVariants}
         >
-          <button
+          <motion.button
             onClick={() => scrollToSection('projects')}
             className="btn-primary"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             View My Work
-          </button>
-          <button
+          </motion.button>
+          <motion.button
             onClick={() => scrollToSection('contact')}
             className="btn-secondary"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             Get In Touch
-          </button>
+          </motion.button>
         </motion.div>
       </motion.div>
     </section>
