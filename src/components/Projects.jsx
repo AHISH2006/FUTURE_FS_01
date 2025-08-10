@@ -55,7 +55,7 @@ export default function Projects() {
     {
       title: "Automated CI/CD Pipeline with Jenkins & Docker",
       description: "AutoDeploy360 is a DevOps automation project that streamlines application deployment using CI/CD pipelines. It ensures faster releases, reduced errors, and improved collaboration by integrating Jenkins, Docker, and GitHub for efficient build, test, and deploy workflows.",
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=800&h=400",
+      image: "https://i.pinimg.com/736x/a0/99/9f/a0999feef82f75c2b17ccb47b34c1930.jpg",
       technologies: ["React.js", "GitHub", "Node.js", "Docker", "Jenkins"],
       techColors: ["tag-primary", "tag-secondary", "tag-accent","tag-secondary", "tag-primary"],
       github: "https://github.com/AHISH2006/NAAN-MUDHALVAN",
