@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ========== THEME VARIABLES ========== */
+:root {
+  /* Colors */
+  --background: hsl(222, 84%, 5%);
+  --foreground: hsl(210, 40%, 98%);
+  --card: hsl(215, 28%, 17%);
+  --card-foreground: hsl(210, 40%, 98%);
+  --primary: hsl(239, 84%, 67%);
+  --primary-foreground: #fff;
+  --secondary: hsl(263, 70%, 68%);
+  --secondary-foreground: #fff;
+  --accent: hsl(187, 96%, 43%);
+  --accent-foreground: hsl(222, 84%, 5%);
+  --muted: hsl(215, 28%, 17%);
+  --muted-foreground: hsl(218, 11%, 65%);
+  --border: hsl(217, 33%, 18%);
+  --ring: hsl(239, 84%, 67%);
+
+  /* Fonts & Radius */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --radius: 1rem;
+
+  /* Surfaces */
+  --surface: hsl(215, 28%, 17%);
+}
+
+/* Dark mode */
+.dark {
+  --background: hsl(222, 84%, 5%);
+  --foreground: hsl(210, 40%, 98%);
+}
+
+/* ========== BASE STYLES ========== */
+* {
+  box-sizing: border-box;
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--foreground);
+  margin: 0;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: var(--radius);
+}
+
+/* Sections */
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 4rem 2rem;
+}
+
+/* Containers */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ========== REUSABLE EFFECTS ========== */
+.glassmorphism {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-link {
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transition: left 0.3s ease;
+}
+
+.nav-link:hover::after {
+  left: 0;
+}
+
+/* ========== PROJECT CARDS ========== */
+.project-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+/* ========== SKILLS ========== */
+.skill-bar {
+  transition: width 1.5s ease-in-out;
+}
+
+/* ========== ANIMATIONS ========== */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 20px var(--primary); }
+  100% { text-shadow: 0 0 40px var(--secondary), 0 0 50px var(--accent); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ========== RESPONSIVENESS ========== */
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 1.2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
