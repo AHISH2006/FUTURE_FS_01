@@ -3,7 +3,6 @@ import { useState } from 'react';
 import '../styles/Contact.css';
 
 export default function Contact() {
-  // State to hold the form data
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,72 +10,52 @@ export default function Contact() {
     message: ''
   });
 
-  // State to handle UI feedback
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSending, setIsSending] = useState(false); // New: for showing a "loading" state
-  const [isError, setIsError] = useState(false); // New: for showing an error state
+  const [isSending, setIsSending] = useState(false);
+  const [isError, setIsError] = useState(false);
 
-  // Function to handle the form submission
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
-    
-    setIsSending(true); // Set sending state to true
-    setIsError(false); // Reset error state
+    e.preventDefault();
+
+    setIsSending(true);
+    setIsError(false);
 
     try {
-      // The fetch call to send data to your backend API
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch('/api/contact', { // ✅ Relative path works in Vercel
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
+      const data = await response.json();
+
       if (response.ok) {
-        // If the server responds successfully
         setIsSubmitted(true);
-        // Reset form and UI states after a short delay
         setTimeout(() => {
           setIsSubmitted(false);
           setFormData({ name: '', email: '', subject: '', message: '' });
         }, 3000);
       } else {
-        // If the server responds with an error
-        console.error('Server error:', response.statusText);
+        console.error('Server error:', data.message || response.statusText);
         setIsError(true);
       }
     } catch (error) {
-      // Catch network-related errors
       console.error('Submission error:', error);
       setIsError(true);
     } finally {
-      setIsSending(false); // Always set sending state to false
+      setIsSending(false);
     }
   };
 
-  // Handles input changes to update the form state
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const contactInfo = [
-    {
-      icon: "fas fa-envelope",
-      title: "Email",
-      value: "anuahish249@gmail.com"
-    },
-    {
-      icon: "fas fa-phone",
-      title: "Phone",
-      value: "+91 63747 66056"
-    },
-    {
-      icon: "fas fa-map-marker-alt",
-      title: "Location",
-      value: "Coimbatore, Tamil Nadu, India"
-    }
+    { icon: "fas fa-envelope", title: "Email", value: "anuahish249@gmail.com" },
+    { icon: "fas fa-phone", title: "Phone", value: "+91 63747 66056" },
+    { icon: "fas fa-map-marker-alt", title: "Location", value: "Coimbatore, Tamil Nadu, India" }
   ];
 
   const socialLinks = [
@@ -95,7 +74,7 @@ export default function Contact() {
       >
         <h2>Get In <span className="highlight">Touch</span></h2>
         <p>
-          Ready to collaborate or discuss opportunities? I'd love to hear from you.  
+          Ready to collaborate or discuss opportunities? I'd love to hear from you.
           Let's create something amazing together.
         </p>
       </motion.div>
@@ -205,14 +184,14 @@ export default function Contact() {
           <button type="submit" disabled={isSending}>
             {isSending ? 'Sending...' : 'Send Message'}
           </button>
-          
+
           {isSubmitted && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               className="form-success"
             >
-              Thank you for your message! I'll get back to you soon.
+              ✅ Thank you for your message! I'll get back to you soon.
             </motion.div>
           )}
 
@@ -222,7 +201,7 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0 }}
               className="form-error"
             >
-              There was an error sending your message. Please try again.
+              ❌ There was an error sending your message. Please try again.
             </motion.div>
           )}
         </motion.form>
