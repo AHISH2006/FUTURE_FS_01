@@ -58,7 +58,7 @@ export default function Navigation() {
 <motion.nav
   animate={{ transform: 'translateY(0)' }}
   transition={{ duration: 0.5, ease: 'easeOut' }}
-  className="navbar"
+  className="navbar" 
 >
         <div className="nav-container">
           <div className="nav-logo">AHISH | Portfolio</div>
