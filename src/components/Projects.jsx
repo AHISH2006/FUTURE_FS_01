@@ -61,7 +61,25 @@ export default function Projects() {
       github: "https://github.com/AHISH2006/NAAN-MUDHALVAN",
 
     },
-
+     {
+      title: "MERN Stack E-commerce Website",
+      description: "A full-stack e-commerce platform built with the MERN stack (MongoDB, Express, React, Node.js). The site features user authentication, a product catalog, a shopping cart, and a secure checkout process.",
+      image: "src/assets/ecommerce.png",
+      technologies: ["React", "Node.js", "MongoDB", "Express","git","Postman"],
+      techColors: ["tag-primary", "tag-secondary", "tag-accent","tag-primary", "tag-secondary", "tag-accent"],
+      github: "https://github.com/AHISH2006/FUTURE_FS_01.git",
+      live: "https://ahish-portfolio.vercel.app/"
+     },
+        
+     {
+      title: "Rebranding BMW Website",
+      description: "This website, titled BMW - Sheer Driving Pleasure Redefined, is an AI-branded project that redefines the luxury automotive experience. It aims to showcase the future of BMW through its latest vehicles, cutting-edge technology, and an unparalleled driving experience. The design uses a luxury theme with an amber color palette. The project was automatically generated and is kept in sync with its deployment on v0.app.. The site features user authentication, a product catalog, a shopping cart, and a secure checkout process.",
+      image: "src/assets/rebrand.png",
+      technologies: ["Next.js", " Tailwind CSS", "PostCSS","git","Vercel"],
+      techColors: ["tag-primary", "tag-secondary", "tag-accent","tag-primary", "tag-secondary", "tag-accent"],
+      github: "https://github.com/AHISH2006/FUTURE_FS_03.git",
+      live: "https://v0-ai-branding-for-bmw.vercel.app/"
+     }
   ];
 
   return (
