@@ -64,7 +64,7 @@ export default function Projects() {
      {
       title: "MERN Stack E-commerce Website",
       description: "A full-stack e-commerce platform built with the MERN stack (MongoDB, Express, React, Node.js). The site features user authentication, a product catalog, a shopping cart, and a secure checkout process.",
-      image: "src/assets/ecommerce.png",
+      image: "https://i.pinimg.com/736x/26/3c/5a/263c5aeb4177dca61c5582b94bb688ba.jpg",
       technologies: ["React", "Node.js", "MongoDB", "Express","git","Postman"],
       techColors: ["tag-primary", "tag-secondary", "tag-accent","tag-primary", "tag-secondary", "tag-accent"],
       github: "https://github.com/AHISH2006/FUTURE_FS_01.git",
@@ -74,7 +74,7 @@ export default function Projects() {
      {
       title: "Rebranding BMW Website",
       description: "This website, titled BMW - Sheer Driving Pleasure Redefined, is an AI-branded project that redefines the luxury automotive experience. It aims to showcase the future of BMW through its latest vehicles, cutting-edge technology, and an unparalleled driving experience. The design uses a luxury theme with an amber color palette. The project was automatically generated and is kept in sync with its deployment on v0.app.. The site features user authentication, a product catalog, a shopping cart, and a secure checkout process.",
-      image: "src/assets/rebrand.png",
+      image: "https://i.pinimg.com/1200x/2d/f2/ad/2df2ad937d4b048d3cfad6a1957547c5.jpg",
       technologies: ["Next.js", " Tailwind CSS", "PostCSS","git","Vercel"],
       techColors: ["tag-primary", "tag-secondary", "tag-accent","tag-primary", "tag-secondary", "tag-accent"],
       github: "https://github.com/AHISH2006/FUTURE_FS_03.git",
