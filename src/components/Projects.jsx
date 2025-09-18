@@ -67,8 +67,8 @@ export default function Projects() {
       image: "https://i.pinimg.com/736x/26/3c/5a/263c5aeb4177dca61c5582b94bb688ba.jpg",
       technologies: ["React", "Node.js", "MongoDB", "Express","git","Postman"],
       techColors: ["tag-primary", "tag-secondary", "tag-accent","tag-primary", "tag-secondary", "tag-accent"],
-      github: "https://github.com/AHISH2006/FUTURE_FS_01.git",
-      live: "https://ahish-portfolio.vercel.app/"
+      github: "https://github.com/AHISH2006/FUTURE_FS_02.git",
+      live: "https://gamex-store-ahish.onrender.com/"
      },
         
      {
